@@ -1,0 +1,35 @@
+# Importing the json class library
+import json
+
+# Creating values for the library for 'John Doe'
+data1 = {
+    'name': 'John Doe',
+    'age': 30,
+    'city': 'New York, NY',
+    'interests': ['Traveling', 'Football', 'Golf', 'Running', 'Videogames', 'History'],
+    'is_student': False
+}
+
+# Creating a JSON and writing the Python object contents to the JSON
+with open('data1.json', 'w') as json_file:
+    json.dump(data1, json_file, indent=4)
+
+print("Data has been written to data1.json")
+
+# Reading the JSON file
+with open('data1.json', 'r') as json_file:
+    # Loading JSON data into a Python object
+    loaded_data = json.load(json_file)
+
+print("Successfully able to read data1.json")
+print(loaded_data)
+
+# Altering the JSON Object
+loaded_data['age'] = 34  # <-ints
+loaded_data['interests'].append('Secret Hobby')  # <- Fixed this line
+
+# Rewrite the changes to the JSON file.
+with open('data1.json', 'w') as json_file:
+    json.dump(loaded_data, json_file, indent=4)
+
+print("Changes have been written back to data1.json")
